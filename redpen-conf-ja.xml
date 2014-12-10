@@ -1,0 +1,8 @@
+<redpen-conf lang="ja">
+    <validators>
+        <validator name="KatakanaSpellCheck"/>
+        <validator name="SpaceBetweenAlphabeticalWord" />
+        <validator name="CommaNumber" />
+        <validator name="SuccessiveWord" />
+    </validators>
+</redpen-conf>

@@ -1,0 +1,17 @@
+{
+  "name": "redpen",
+  "main": "./lib/redpen",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationCommands": {
+    "atom-workspace": "redpen:toggle"
+  },
+  "repository": "https://github.com/atom/redpen",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+      "atom-message-panel": "^0.3.0"
+  }
+}

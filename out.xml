@@ -1,0 +1,39 @@
+00:47:23.721 [main] INFO  c.r.distributor.ResultDistributor - Creating Distributor...
+00:47:23.742 [main] INFO  cc.redpen.ConfigurationLoader - Loading config from specified config file: "/Users/Stewie/github/redpen/./redpen-conf-ja.xml"
+00:47:23.754 [main] INFO  cc.redpen.ConfigurationLoader - Succeeded to load configuration file
+00:47:23.754 [main] INFO  cc.redpen.ConfigurationLoader - Language is set to "ja"
+00:47:23.755 [main] INFO  cc.redpen.ConfigurationLoader - No "symbols" block found in the configuration
+00:47:24.221 [main] INFO  cc.redpen.parser.SentenceExtractor - "[。, ？, ！]" are added as a end of sentence characters
+00:47:24.221 [main] INFO  cc.redpen.parser.SentenceExtractor - "[’, ”]" are added as a right quotation characters
+00:47:24.228 [main] INFO  c.r.v.s.KatakanaSpellCheckValidator - Loading default katakana word dictionary
+00:47:24.228 [main] INFO  c.r.v.s.KatakanaSpellCheckValidator - Succeeded to load default dictionary.
+00:47:24.230 [main] INFO  cc.redpen.validator.Validator - max_num is not set. Use default value of 3
+<validation-result>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>64</lineNum><sentence>来年後半からは、Apple Watch向けの完全ネイティブアプリケーションが作成できるようになる予定</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>76</lineNum><sentence>UIと画像リソースは Apple Watch 上に保存され動作する</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>86</lineNum><sentence>Apple Watch の上部を下にSwipeしたらでるらしい</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>86</lineNum><sentence>Apple Watch の上部を下にSwipeしたらでるらしい</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>95</lineNum><sentence>Local Push (サーバ不要)と Remote Push（サーバからの Push 配信）の両方対応</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>120</lineNum><sentence>ユーザがWatchAppを起動させたら、iOS app 内の WatchKit Extension が起動させられるユーザがWatchAppを止めたらWatchKit Extensionも止められる</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>120</lineNum><sentence>ユーザがWatchAppを起動させたら、iOS app 内の WatchKit Extension が起動させられるユーザがWatchAppを止めたらWatchKit Extensionも止められる</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>120</lineNum><sentence>ユーザがWatchAppを起動させたら、iOS app 内の WatchKit Extension が起動させられるユーザがWatchAppを止めたらWatchKit Extensionも止められる</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>120</lineNum><sentence>ユーザがWatchAppを起動させたら、iOS app 内の WatchKit Extension が起動させられるユーザがWatchAppを止めたらWatchKit Extensionも止められる</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>120</lineNum><sentence>ユーザがWatchAppを起動させたら、iOS app 内の WatchKit Extension が起動させられるユーザがWatchAppを止めたらWatchKit Extensionも止められる</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>120</lineNum><sentence>ユーザがWatchAppを起動させたら、iOS app 内の WatchKit Extension が起動させられるユーザがWatchAppを止めたらWatchKit Extensionも止められる</sentence></error>
+<error><validator>KatakanaSpellCheck</validator><message>カタカナ単語 "スクリーン" に類似する単語 "スクロール" が行 "87" でみつかりました</message><file>WatchKit.md</file><lineNum>128</lineNum><sentence>スクリーンに表示される前に呼ばれる</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>175</lineNum><sentence>下部にPageControlがついて横フリックで画面を切り替え</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>175</lineNum><sentence>下部にPageControlがついて横フリックで画面を切り替え</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>185</lineNum><sentence>画面をPushするのは pushControllerWithName:context:Push する新しい画面にデータを受け渡すのは context 引数の部分を使うiOS みたいに ViewController をセットして、プロパティアクセスってことはできないっぽい。</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>185</lineNum><sentence>画面をPushするのは pushControllerWithName:context:Push する新しい画面にデータを受け渡すのは context 引数の部分を使うiOS みたいに ViewController をセットして、プロパティアクセスってことはできないっぽい。</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>185</lineNum><sentence>画面をPushするのは pushControllerWithName:context:Push する新しい画面にデータを受け渡すのは context 引数の部分を使うiOS みたいに ViewController をセットして、プロパティアクセスってことはできないっぽい。</sentence></error>
+<error><validator>SuccessiveWord</validator><message>単語 "か" は連続して使用されています</message><file>WatchKit.md</file><lineNum>186</lineNum><sentence>インスタンス化が Apple Watch 側の Storyboard を軸としてるかかな？</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>188</lineNum><sentence>Pop は popController。</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>192</lineNum><sentence>勝手に画面下部にPageControlが配置される</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>192</lineNum><sentence>勝手に画面下部にPageControlが配置される</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の前にスペースが存在しません</message><file>WatchKit.md</file><lineNum>205</lineNum><sentence>だがViewではなく抽象化されたプロクシオブジェクト。</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>205</lineNum><sentence>だがViewではなく抽象化されたプロクシオブジェクト。</sentence></error>
+<error><validator>KatakanaSpellCheck</validator><message>カタカナ単語 "システムフォント" に類似する単語 "カスタムフォント" が行 "217" でみつかりました</message><file>WatchKit.md</file><lineNum>223</lineNum><sentence>UIFontDescriptor を使ってシステムフォントをカスタムすることができる。</sentence></error>
+<error><validator>SpaceBetweenAlphabeticalWord</validator><message>アルファベット単語の後にスペースが存在しません</message><file>WatchKit.md</file><lineNum>247</lineNum><sentence>iOS でいう UIViewController。</sentence></error>
+<error><validator>KatakanaSpellCheck</validator><message>カタカナ単語 "スクリーン" に類似する単語 "スクロール" が行 "87" でみつかりました</message><file>WatchKit.md</file><lineNum>260</lineNum><sentence>スクリーンに表示される前に呼ばれる</sentence></error>
+</validation-result>
+00:47:24.465 [main] ERROR cc.redpen.Main - The number of errors "26" is larger than specified (limit is "1").
