@@ -1,17 +1,15 @@
 {
   "name": "redpen",
   "main": "./lib/redpen",
-  "version": "0.0.0",
-  "description": "A short description of your package",
-  "activationCommands": {
-    "atom-workspace": "redpen:toggle"
-  },
-  "repository": "https://github.com/atom/redpen",
+  "version": "0.1.0",
+  "description": "Validate your document using 'RedPen'",
+  "repository": "https://github.com/griffin-stewie/atom-redpen",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.58.0"
   },
   "dependencies": {
-      "atom-message-panel": "^0.3.0"
+      "atom-message-panel": ">=1.1.3",
+      "xml2json": "^0.5.1"
   }
 }

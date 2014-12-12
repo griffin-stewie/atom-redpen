@@ -1,74 +1,68 @@
-RedpenView = require './redpen-view'
+parser = require './redpenResultParser'
 {CompositeDisposable} = require 'atom'
 
-msgPanel = require 'atom-message-panel';
-
 module.exports = Redpen =
-  redpenView: null
-  modalPanel: null
-  subscriptions: null
 
-  configDefaults:
-    pathForRedPen: "/usr/local/redpen/bin/redpen"
-    grammars: [
-      'source.markdown'
-      'text.plain'
-      'text.plain.null-grammar'
-    ]
+  subscriptions: null
+  validator: null
+  
+  config:
+    pathForRedPen:
+      title: 'Path for RedPen CLI'
+      description: ''
+      type: 'string'
+      default: "/usr/local/redpen/bin/redpen"
+      order: 10
+    pathForConfigurationXMLFile:
+      title: 'Path for Configuration XML File'
+      description: ''
+      type: 'string'
+      default: ''
+      order: 20
+    JAVA_HOME:
+      title: 'JAVA_HOME Path'
+      description: ''
+      type: 'string'
+      default: ''
+      order: 30
+    validateOnSave:
+      title: 'Validate on save'
+      description: 'Run validation each time a file is saved'
+      type: 'boolean'
+      default: false
+      order: 40
 
   activate: (state) ->
-    @redpenView = new RedpenView(state.redpenViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @redpenView.getElement(), visible: false)
-
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'redpen:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'redpen:validate': => @validate()
+
+    @validator = @createValidator()
+
+    wrap = () =>
+      @validator.validate()
+
+    @validateOnSaveObserveSubscription =
+      atom.config.observe 'redpen.validateOnSave', (flag) ->
+        if flag
+          atom.workspace.eachEditor (editor) ->
+            editor.buffer.on 'saved', wrap
+        else
+          atom.workspace.eachEditor (editor) ->
+            editor.buffer.off 'saved', wrap
+
 
   deactivate: ->
-    @modalPanel.destroy()
     @subscriptions.dispose()
-    @redpenView.destroy()
+    @validator?.destroy()
+    @validator = null
 
-  serialize: ->
-    redpenViewState: @redpenView.serialize()
+  validate: ->
+    @validator.validate()
 
-  toggle: ->
-    console.log 'Redpen was toggled!'
-
-    editor = atom.workspace.getActivePaneItem()
-    pathForSource = editor.getPath()
-    previousActivePane = atom.workspace.getActivePane()
-
-    inputFormat = "markdown"
-    resultFormat = "xml"
-
-    tempOutput = "/tmp/redpen_result.xml"
-
-    @exec = require('child_process').exec
-
-    redpen = atom.config.get "redpen.pathForRedPen"
-
-    console.log redpen
-    console.log pathForSource
-
-    command = "export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home'; #{redpen} -c /Users/Stewie/github/redpen/redpen-conf-ja.xml -r xml -f markdown #{pathForSource}"
-
-    if atom.workspaceView.find('.am-panel').length != 1
-      msgPanel.init('<span class="icon-bug"></span> RedPen report');
-    else
-      msgPanel.clear();
-
-
-    # ここでコマンド実行
-    @exec command, (error, stdout, stderr) ->
-      if error?
-        console.log "Script Somthing wrong"
-        console.log stderr
-
-        msgPanel.append.lineMessage(0, 0, error.message, stdout, 'text-error');
-
-      else
-        console.log "Script executed"
-        console.log stdout
+  createValidator: ->
+    unless @validator?
+      Validator = require './redpenValidator'
+      @validator = new Validator()
