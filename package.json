@@ -6,7 +6,7 @@
   "repository": "https://github.com/griffin-stewie/atom-redpen",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.58.0"
+    "atom": ">=0.158.0"
   },
   "dependencies": {
       "atom-message-panel": ">=1.1.3",
