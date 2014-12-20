@@ -2,7 +2,7 @@
 
 Validate your document using [RedPen](http://redpen.cc/).
 
-![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![A screenshot of your spankin' package](http://i.gyazo.com/d67abf2d7bbb8d404d94a3d63f59dd39.gif)
 
 ## Installation
 
