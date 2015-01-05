@@ -5,11 +5,11 @@ module.exports = Redpen =
 
   subscriptions: null
   validator: null
-  
+
   config:
     pathForRedPen:
       title: 'Path for RedPen CLI'
-      description: ''
+      description: 'Requires v1.0 or higher'
       type: 'string'
       default: "/usr/local/redpen/bin/redpen"
       order: 10
@@ -36,13 +36,13 @@ module.exports = Redpen =
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
-    # Register command that toggles this view
+    # Register command
     @subscriptions.add atom.commands.add 'atom-workspace', 'redpen:validate': => @validate()
 
     @validator = @createValidator()
 
     wrap = () =>
-      @validator.validate()
+      @validate()
 
     @validateOnSaveObserveSubscription =
       atom.config.observe 'redpen.validateOnSave', (flag) ->
@@ -60,7 +60,9 @@ module.exports = Redpen =
     @validator = null
 
   validate: ->
-    @validator.validate()
+    @validator.versionCheck (result) =>
+      if result
+        @validator.validate()
 
   createValidator: ->
     unless @validator?

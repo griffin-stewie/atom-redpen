@@ -1,20 +1,13 @@
 # See https://atom.io/docs/latest/creating-a-package#menus for more details
-'context-menu':
-  'atom-text-editor': [
-    {
-      'label': 'Toggle redpen'
-      'command': 'redpen:toggle'
-    }
-  ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'redpen'
+      'label': 'RedPen'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'redpen:toggle'
+          'label': 'Validate'
+          'command': 'redpen:validate'
         }
       ]
     ]
