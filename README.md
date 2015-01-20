@@ -14,7 +14,12 @@ $ apm install redpen
 
 ### Install `RedPen` CLI
 
-Install `RedPen` CLI from [here](http://redpen.cc/docs/latest/index.html "QuickStart — RedPen 1.0-Beta documentation")
+Install with [Homebrew](http://brew.sh/ "Homebrew — The missing package manager for OS X")
+```
+$ brew install redpen
+```
+
+Or you can install `RedPen` CLI manually from [here](http://redpen.cc/docs/latest/index.html "QuickStart — RedPen 1.0-Beta documentation")
 
 ### Set Up Paths
 
