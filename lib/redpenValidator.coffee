@@ -132,8 +132,8 @@ module.exports =
           # console.log "some results"
           for val in result[0].errors
             @messagePanel.add new LineMessageView
-              line: val.lineNum,
-              character: 0,
+              line: val.atomErrorEndPositionRow,
+              character: val.atomErrorEndPositionCollum,
               message: val.message,
               preview: val.sentence,
               className: 'text-error'
