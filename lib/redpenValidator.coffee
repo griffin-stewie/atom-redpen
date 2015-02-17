@@ -15,6 +15,8 @@ module.exports =
 
     constructor: (args) ->
       @messagePanel = new MessagePanelView title: '<span class="icon-bug"></span> RedPen report', rawTitle: true unless @messagePanel?
+      atom.workspace.onDidChangeActivePaneItem =>
+        @messagePanel.close()
 
     destroy: ->
         @messagePanel?.remove()
