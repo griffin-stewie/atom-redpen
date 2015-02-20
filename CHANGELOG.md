@@ -1,3 +1,10 @@
+## 0.3.0 - show error position offset RedPen CLI v1.1.1
+
+- update atom-message-panel
+- fix panel close
+- show atom-message-panel whenever needs to show.
+- hide panel when focus changed
+
 ## 0.2.0 - Change internal redpen-cli output format
 
 - change internal redpen-cli output format, XML → JSON
