@@ -1,3 +1,7 @@
+## 0.3.1 - show error position offset RedPen CLI v1.1.2
+
+- fix compatibly for RedPen CLI v1.1.2
+
 ## 0.3.0 - show error position offset RedPen CLI v1.1.1
 
 - update atom-message-panel
