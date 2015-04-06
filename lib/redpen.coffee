@@ -42,16 +42,23 @@ module.exports = Redpen =
     @validator = @createValidator()
 
     wrap = () =>
+      console.log "onDidSave"
       @validate()
 
-    @validateOnSaveObserveSubscription =
-      atom.config.observe 'redpen.validateOnSave', (flag) ->
-        if flag
-          atom.workspace.eachEditor (editor) ->
-            editor.buffer.on 'saved', wrap
-        else
-          atom.workspace.eachEditor (editor) ->
-            editor.buffer.off 'saved', wrap
+    @subscriptions.add atom.workspace.observeTextEditors (editor) ->
+      editor.getBuffer().onDidSave =>
+        wrap() if atom.config.get 'redpen.validateOnSave'
+    # @validateOnSaveObserveSubscription =
+    #   atom.config.observe 'redpen.validateOnSave', (flag) =>
+    #     console.log flag
+    #     if flag
+    #       @onSaveSubscriptions = atom.workspace.observeTextEditors (editor) ->
+    #         editor.onDidSave wrap
+    #     else
+    #       if @onSaveSubscriptions?
+    #         console.log "dispose"
+    #         @onSaveSubscriptions.dispose()
+    #         @onSaveSubscriptions = null
 
 
   deactivate: ->

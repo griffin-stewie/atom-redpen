@@ -1,3 +1,7 @@
+## 0.3.2 - fix deprecated calls
+
+- fix deprecated calls
+
 ## 0.3.1 - show error position offset RedPen CLI v1.1.2
 
 - fix compatibly for RedPen CLI v1.1.2
