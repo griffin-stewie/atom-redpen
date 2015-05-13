@@ -1,7 +1,7 @@
 {
   "name": "redpen",
   "main": "./lib/redpen",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Validate your document using 'RedPen'",
   "repository": "https://github.com/griffin-stewie/atom-redpen",
   "license": "MIT",
