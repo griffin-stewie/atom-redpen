@@ -46,7 +46,7 @@ module.exports = Redpen =
       @validate()
 
     @subscriptions.add atom.workspace.observeTextEditors (editor) ->
-      editor.getBuffer().onDidSave =>
+      editor.getBuffer().onDidSave ->
         wrap() if atom.config.get 'redpen.validateOnSave'
     # @validateOnSaveObserveSubscription =
     #   atom.config.observe 'redpen.validateOnSave', (flag) =>

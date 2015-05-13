@@ -19,8 +19,8 @@ module.exports =
         @messagePanel.close()
 
     destroy: ->
-        @messagePanel?.remove()
-        @messagePanel = null
+      @messagePanel?.remove()
+      @messagePanel = null
 
     needsValidate: ->
       editor = atom.workspace.getActiveEditor()
@@ -45,8 +45,8 @@ module.exports =
         JAVA_HOME = atom.config.get "redpen.JAVA_HOME"
         unless JAVA_HOME? and JAVA_HOME.trim() isnt ''
           errorMessage = 'JAVA_HOME is missing. See preferences.'
-          @messagePanel.attach();
-          @messagePanel.clear();
+          @messagePanel.attach()
+          @messagePanel.clear()
           @messagePanel.add new PlainMessageView message: errorMessage, className: 'text-error'
           return
 
@@ -68,8 +68,8 @@ module.exports =
 
           if stdout.length > 0 && stdout[0] isnt requireMajorVersion
             console.log "v#{requireMajorVersion} 以下"
-            @messagePanel.attach();
-            @messagePanel.clear();
+            @messagePanel.attach()
+            @messagePanel.clear()
             errorMessage = "redpen package requires RedPenCLI v#{requireMajorVersion} or higher update your RedPenCLI"
             @messagePanel.add new PlainMessageView message: errorMessage, className: 'text-error'
             callback(false)
@@ -85,8 +85,8 @@ module.exports =
 
       # console.log atom.workspace.panelForItem(@messagePanel)
 
-      @messagePanel.attach();
-      @messagePanel.clear();
+      @messagePanel.attach()
+      @messagePanel.clear()
 
       inputFormat = detectedInputFormat()
       resultFormat = "xml"
