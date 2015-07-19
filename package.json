@@ -1,12 +1,12 @@
 {
   "name": "redpen",
   "main": "./lib/redpen",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Validate your document using 'RedPen'",
   "repository": "https://github.com/griffin-stewie/atom-redpen",
   "license": "MIT",
   "engines": {
-    "atom": ">=0.188.0"
+    "atom": ">=1.0.0"
   },
   "dependencies": {
     "atom-message-panel": ">=1.2.2"

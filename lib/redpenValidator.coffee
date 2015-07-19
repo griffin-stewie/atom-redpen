@@ -3,7 +3,7 @@ parser = require './redpenResultParser'
 {MessagePanelView, LineMessageView, PlainMessageView} = require 'atom-message-panel'
 
 detectedInputFormat = () ->
-  editor = atom.workspace.getActiveEditor()
+  editor = atom.workspace.getActiveTextEditor()
   switch editor.getGrammar().scopeName
     when 'source.gfm' then "markdown"
     when 'text.html.textile' then "wiki"
@@ -23,7 +23,7 @@ module.exports =
       @messagePanel = null
 
     needsValidate: ->
-      editor = atom.workspace.getActiveEditor()
+      editor = atom.workspace.getActiveTextEditor()
       grammars = [
           'source.gfm'
           'text.html.textile'

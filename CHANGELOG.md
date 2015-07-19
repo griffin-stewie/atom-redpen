@@ -1,3 +1,7 @@
+## 0.3.4 - fix deprecated calls
+
+- fix deprecated calls
+
 ## 0.3.3 - fix deprecated calls
 
 - fix deprecated calls
