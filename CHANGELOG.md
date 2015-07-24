@@ -1,3 +1,9 @@
+## 0.3.5 - supports AsciiDoc
+
+- Supports AsciiDoc
+    - requires redpen cli version 1.3
+- fix "Cannot read property 'close' of null" #4
+
 ## 0.3.4 - fix deprecated calls
 
 - fix deprecated calls

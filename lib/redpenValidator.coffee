@@ -7,6 +7,7 @@ detectedInputFormat = () ->
   switch editor.getGrammar().scopeName
     when 'source.gfm' then "markdown"
     when 'text.html.textile' then "wiki"
+    when 'source.asciidoc' then "asciidoc"
     else "plain"
 
 
@@ -16,13 +17,13 @@ module.exports =
     constructor: (args) ->
       @messagePanel = new MessagePanelView title: '<span class="icon-bug"></span> RedPen report', rawTitle: true unless @messagePanel?
       atom.workspace.onDidChangeActivePaneItem =>
-        @messagePanel.close()
+        @messagePanel?.close()
 
     destroy: ->
       @messagePanel?.remove()
       @messagePanel = null
 
-    needsValidate: ->
+    needsValidateAsync: (callback) ->
       editor = atom.workspace.getActiveTextEditor()
       grammars = [
           'source.gfm'
@@ -31,55 +32,65 @@ module.exports =
           'text.plain.null-grammar'
       ]
 
-      if editor.getGrammar().scopeName in grammars
-        return true
-      else
-        return false
-
-    versionCheck: (callback) ->
-      unless @needsValidate()
-        callback(false)
-      else
-        @exec = require('child_process').exec
-        redpen = atom.config.get "redpen.pathForRedPen"
-        JAVA_HOME = atom.config.get "redpen.JAVA_HOME"
-        unless JAVA_HOME? and JAVA_HOME.trim() isnt ''
-          errorMessage = 'JAVA_HOME is missing. See preferences.'
+      versionCheckHandler = (version, errorMessage) ->
+        if errorMessage?length > 0
           @messagePanel.attach()
           @messagePanel.clear()
           @messagePanel.add new PlainMessageView message: errorMessage, className: 'text-error'
+          callback(false)
           return
 
-        command = "export JAVA_HOME='#{JAVA_HOME}'; #{redpen} --version"
+        console.log version
 
-        # Execute redpen-cli command
-        @exec command, (error, stdout, stderr) =>
+        if version?.length > 0
+          versionArray = version.split(".")
+          console.log versionArray
+          if parseInt(versionArray[0], 10) >= 1 and parseInt(versionArray[1], 10) >= 3
+            console.log "can handle asciidoc"
+            grammars.unshift('source.asciidoc')
+          else
+            console.log "can't handle asciidoc"
+
+        if editor.getGrammar().scopeName in grammars
+          console.log "can't handle asciidoc"
+          callback(true)
+        else
+          console.log "I don't know handle asciidoc"
+          callback(false)
+
+      @redpenVersion versionCheckHandler
+
+    redpenVersion: (callback) ->
+      @exec = require('child_process').exec
+      redpen = atom.config.get "redpen.pathForRedPen"
+      JAVA_HOME = atom.config.get "redpen.JAVA_HOME"
+      unless JAVA_HOME? and JAVA_HOME.trim() isnt ''
+        errorMessage = 'JAVA_HOME is missing. See preferences.'
+        callback(null, errorMessage)
+        return
+
+      command = "export JAVA_HOME='#{JAVA_HOME}'; #{redpen} --version"
+
+      # Execute redpen-cli command
+      @exec command, (error, stdout, stderr) =>
+        console.log "Script executed"
+        console.log stdout
+        console.log stderr
+        console.log error
+
+        if error?
+          console.log "Script Somthing wrong"
+        else
           console.log "Script executed"
-          console.log stdout
-          console.log stderr
-          console.log error
 
-          if error?
-            console.log "Script Somthing wrong"
-          else
-            console.log "Script executed"
-
-          requireMajorVersion = "1"
-
-          if stdout.length > 0 && stdout[0] isnt requireMajorVersion
-            console.log "v#{requireMajorVersion} 以下"
-            @messagePanel.attach()
-            @messagePanel.clear()
-            errorMessage = "redpen package requires RedPenCLI v#{requireMajorVersion} or higher update your RedPenCLI"
-            @messagePanel.add new PlainMessageView message: errorMessage, className: 'text-error'
-            callback(false)
-          else
-            console.log "v#{requireMajorVersion} 以上"
-            callback(true)
+        if stderr.length > 0
+          requiresVersion = "1.3"
+          errorMessage = "something wrong when redpen version checking. This package requires redpen version #{requiresVersion}"
+          callback(null, errorMessage)
+        else
+          callback(stdout, null)
 
     validate: ->
-      return unless @needsValidate()
-
       file = atom.workspace.getActivePaneItem()
       pathForSource = file.getPath()
 
