@@ -67,9 +67,11 @@ module.exports = Redpen =
     @validator = null
 
   validate: ->
-    @validator.versionCheck (result) =>
-      if result
+    handler = (accepts) =>
+      if accepts
         @validator.validate()
+
+    @validator.needsValidateAsync handler
 
   createValidator: ->
     unless @validator?
