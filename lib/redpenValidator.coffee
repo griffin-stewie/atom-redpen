@@ -7,6 +7,7 @@ detectedInputFormat = () ->
   switch editor.getGrammar().scopeName
     when 'source.gfm' then "markdown"
     when 'text.html.textile' then "wiki"
+    when 'source.asciidoc' then "asciidoc"
     else "plain"
 
 
@@ -26,6 +27,7 @@ module.exports =
       editor = atom.workspace.getActiveTextEditor()
       grammars = [
           'source.gfm'
+          'source.asciidoc'
           'text.html.textile'
           'text.plain'
           'text.plain.null-grammar'
