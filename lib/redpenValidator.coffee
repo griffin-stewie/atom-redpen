@@ -25,6 +25,10 @@ module.exports =
 
     needsValidateAsync: (callback) ->
       editor = atom.workspace.getActiveTextEditor()
+      unless editor?
+        callback(false)
+        return
+
       grammars = [
           'source.gfm'
           'text.html.textile'

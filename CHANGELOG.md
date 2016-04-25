@@ -1,3 +1,8 @@
+## 0.3.6 - fix crash
+
+- fix "Cannot read property 'getGrammar' of undefined" #6
+
+
 ## 0.3.5 - supports AsciiDoc
 
 - Supports AsciiDoc
