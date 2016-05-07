@@ -19,6 +19,13 @@ module.exports = Redpen =
       type: 'string'
       default: ''
       order: 20
+    localeForConfigurationXMLFile:
+      title: 'Locale for Configuration XML File'
+      description: 'uses auto detect configuration XML file'
+      type: 'string'
+      default: 'ja'
+      enum: ['ja', 'en']
+      order: 25
     JAVA_HOME:
       title: 'JAVA_HOME Path'
       description: ''

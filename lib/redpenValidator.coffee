@@ -1,5 +1,6 @@
 path = require 'path'
 parser = require './redpenResultParser'
+fs = require 'fs'
 {MessagePanelView, LineMessageView, PlainMessageView} = require 'atom-message-panel'
 
 detectedInputFormat = () ->
@@ -119,6 +120,8 @@ module.exports =
 
       pathForConfigurationXMLFile = atom.config.get "redpen.pathForConfigurationXMLFile"
       # console.log pathForConfigurationXMLFile
+      pathForConfigurationXMLFile = @resolveConfigLocation(pathForConfigurationXMLFile, pathForSource)
+
       unless pathForConfigurationXMLFile? and pathForConfigurationXMLFile.trim() isnt ''
         packageRootPath = atom.packages.resolvePackagePath("redpen")
         pathForConfigurationXMLFile = path.join(packageRootPath, "assets", "redpen_conf", "ja", "redpen-conf-ja.xml")
@@ -157,3 +160,43 @@ module.exports =
         else
           console.log "success"
           @messagePanel.add new PlainMessageView message: "Success", className: 'text-success'
+
+    resolveConfigLocation: (configurationXMLPath, targetFilePath) ->
+      defaultConfigName = "redpen-conf"
+      pathCandidates = []
+      locale = atom.config.get "redpen.localeForConfigurationXMLFile"
+      console.log "Locale: " + locale
+
+      REDPEN_HOME = process.env["REDPEN_HOME"]
+
+      path = require 'path'
+
+      if configurationXMLPath != null && configurationXMLPath.length > 0
+        pathCandidates.push(configurationXMLPath)
+
+      pathToTargetFileDir = path.dirname(targetFilePath)
+      pathCandidates.push(path.join(pathToTargetFileDir, defaultConfigName + ".xml"))
+      pathCandidates.push(path.join(pathToTargetFileDir, defaultConfigName + "-" + locale + ".xml"))
+
+      for dir in atom.project.getDirectories()
+        projPath = dir.getRealPathSync()
+        pathCandidates.push(path.join(projPath, defaultConfigName + ".xml"))
+        pathCandidates.push(path.join(projPath, defaultConfigName + "-" + locale + ".xml"))
+
+      if REDPEN_HOME?
+        pathCandidates.push(path.join(REDPEN_HOME, defaultConfigName + ".xml"))
+        pathCandidates.push(path.join(REDPEN_HOME, defaultConfigName + "-" + locale + ".xml"))
+        pathCandidates.push(path.join(REDPEN_HOME, "conf", defaultConfigName + ".xml"))
+        pathCandidates.push(path.join(REDPEN_HOME, "conf", defaultConfigName + "-" + locale + ".xml"))
+
+      resolved = @resolve(pathCandidates)
+      console.log "resolved ConfigXML Path: " + resolved
+      return resolved
+
+    resolve: (pathCandidates) ->
+      console.log pathCandidates
+      for path in pathCandidates
+        if fs.existsSync(path) and fs.statSync(path).isFile()
+          return path
+
+      return null
