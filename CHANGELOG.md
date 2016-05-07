@@ -1,3 +1,22 @@
+## 0.4.0 - Add searching configuration XML
+
+Added searching configuration XML feature. order is
+
+1. `Path for Configuration XML File` on settings
+1. in the same directory as the target text file
+1. in the project root directory
+1. directly under `REDPEN_HOME`
+1. directly under `REDPEN_HOME/conf/`
+1. bundled redpen-conf-ja.xml 
+
+Configuration XML File name shold be
+
+- `redpen-conf.xml`
+- `redpen-conf-{LOCALE}.xml`
+
+You can set your `{LOCALE}` on settings.
+
+
 ## 0.3.6 - fix crash
 
 - fix "Cannot read property 'getGrammar' of undefined" #6
