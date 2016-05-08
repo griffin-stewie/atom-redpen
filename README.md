@@ -14,6 +14,7 @@ $ apm install redpen
 
 ### Install `RedPen` CLI
 
+This package requires RedPen CLI version 1.5 or greater.
 Install with [Homebrew](http://brew.sh/ "Homebrew — The missing package manager for OS X")
 ```
 $ brew install redpen
@@ -56,7 +57,7 @@ linter-redpen searches configuration XML. searching order is
 1. in the project root directory
 1. directly under `REDPEN_HOME`
 1. directly under `REDPEN_HOME/conf/`
-1. bundled redpen-conf-ja.xml 
+1. bundled redpen-conf-ja.xml
 
 Configuration XML File name shold be
 

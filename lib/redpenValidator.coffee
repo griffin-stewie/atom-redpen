@@ -91,7 +91,7 @@ module.exports =
           console.log "Script executed"
 
         if stderr.length > 0
-          requiresVersion = "1.3"
+          requiresVersion = "1.5"
           errorMessage = "something wrong when redpen version checking. This package requires redpen version #{requiresVersion}"
           callback(null, errorMessage)
         else

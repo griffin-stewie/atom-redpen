@@ -9,7 +9,7 @@ module.exports = Redpen =
   config:
     pathForRedPen:
       title: 'Path for RedPen CLI'
-      description: 'Requires v1.0 or higher'
+      description: 'Requires v1.5 or higher'
       type: 'string'
       default: "/usr/local/redpen/bin/redpen"
       order: 10
