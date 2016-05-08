@@ -9,6 +9,7 @@ detectedInputFormat = () ->
     when 'source.gfm' then "markdown"
     when 'text.html.textile' then "wiki"
     when 'source.asciidoc' then "asciidoc"
+    when 'text.tex.latex' then "latex"
     else "plain"
 
 
@@ -32,6 +33,7 @@ module.exports =
 
       grammars = [
           'source.gfm'
+          'text.tex.latex'
           'text.html.textile'
           'text.plain'
           'text.plain.null-grammar'
