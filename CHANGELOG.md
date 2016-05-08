@@ -1,3 +1,8 @@
+## 0.5.0 - Support LaTeX
+
+- Added support LaTex
+- Requires RedPen v1.5 or higher
+
 ## 0.4.0 - Add searching configuration XML
 
 Added searching configuration XML feature. order is
@@ -7,7 +12,7 @@ Added searching configuration XML feature. order is
 1. in the project root directory
 1. directly under `REDPEN_HOME`
 1. directly under `REDPEN_HOME/conf/`
-1. bundled redpen-conf-ja.xml 
+1. bundled redpen-conf-ja.xml
 
 Configuration XML File name shold be
 
