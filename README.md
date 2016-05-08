@@ -41,6 +41,7 @@ This package needs set up some paths from Settings
     - Textile
     - Plain
     - AsciiDoc (requires RedPen CLI version 1.3)
+    - LaTeX (requires RedPen CLI version 1.4)
 2. Select the `RedPen: Validate` command from Command Pallette. You can also execute it by hitting `cmd-alt-o` on OS X.
 3. You can see report pane at bottom.
 
