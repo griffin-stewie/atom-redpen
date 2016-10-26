@@ -6,6 +6,8 @@ Validate your document using [RedPen](http://redpen.cc/).
 
 ## Installation
 
+**I do not support Windows environment.** I only support macOS.
+
 ```
 $ apm install redpen
 ```
