@@ -1,6 +1,6 @@
-path = require 'path'
 parser = require './redpenResultParser'
 fs = require 'fs'
+path = require 'path'
 {MessagePanelView, LineMessageView, PlainMessageView} = require 'atom-message-panel'
 
 detectedInputFormat = () ->
@@ -15,16 +15,6 @@ detectedInputFormat = () ->
 
 module.exports =
   class Validator
-
-    constructor: (args) ->
-      @messagePanel = new MessagePanelView title: '<span class="icon-bug"></span> RedPen report', rawTitle: true unless @messagePanel?
-      atom.workspace.onDidChangeActivePaneItem =>
-        @messagePanel?.close()
-
-    destroy: ->
-      @messagePanel?.remove()
-      @messagePanel = null
-
     needsValidateAsync: (callback) ->
       editor = atom.workspace.getActiveTextEditor()
       unless editor?
@@ -66,6 +56,15 @@ module.exports =
           callback(false)
 
       @redpenVersion versionCheckHandler
+
+    constructor: (args) ->
+      @messagePanel = new MessagePanelView title: '<span class="icon-bug"></span> RedPen report', rawTitle: true unless @messagePanel?
+      atom.workspace.onDidChangeActivePaneItem =>
+        @messagePanel?.close()
+
+    destroy: ->
+      @messagePanel?.remove()
+      @messagePanel = null
 
     redpenVersion: (callback) ->
       @exec = require('child_process').exec
@@ -126,6 +125,7 @@ module.exports =
 
       unless pathForConfigurationXMLFile? and pathForConfigurationXMLFile.trim() isnt ''
         packageRootPath = atom.packages.resolvePackagePath("redpen")
+        path = require 'path'
         pathForConfigurationXMLFile = path.join(packageRootPath, "assets", "redpen_conf", "ja", "redpen-conf-ja.xml")
 
       # console.log redpen
