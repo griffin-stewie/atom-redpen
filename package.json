@@ -1,14 +1,17 @@
 {
-  "name": "redpen",
-  "main": "./lib/redpen",
-  "version": "0.5.1",
-  "description": "Validate your document using 'RedPen'",
-  "repository": "https://github.com/griffin-stewie/atom-redpen",
-  "license": "MIT",
-  "engines": {
-    "atom": ">=1.15.0"
-  },
-  "dependencies": {
-    "atom-message-panel": "=1.2.4"
-  }
+    "name": "redpen",
+    "main": "./lib/redpen",
+    "version": "0.5.1",
+    "description": "Validate your document using 'RedPen'",
+    "repository": "https://github.com/griffin-stewie/atom-redpen",
+    "license": "MIT",
+    "engines": {
+        "atom": ">=1.15.0"
+    },
+    "dependencies": {
+        "atom-message-panel": "=1.2.4"
+    },
+    "os": [
+        "darwin"
+    ]
 }
